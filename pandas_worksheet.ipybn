@@ -1,0 +1,141 @@
+
+Open In Colab
+Pandas Worksheet
+Import pandas
+
+import numpy as np
+import pandas as pd
+Read the Ecommerce Purchases csv file and store it in a dataframe
+
+ 
+df=pd.read_csv("/content/Ecommerce Purchases.csv")
+df
+Address	Lot	AM or PM	Browser Info	Company	Credit Card	CC Exp Date	CC Security Code	CC Provider	Email	Job	IP Address	Language	Purchase Price
+0	16629 Pace Camp Apt. 448\nAlexisborough, NE 77...	46 in	PM	Opera/9.56.(X11; Linux x86_64; sl-SI) Presto/2...	Martinez-Herman	6011929061123406	02/20	900	JCB 16 digit	pdunlap@yahoo.com	Scientist, product/process development	149.146.147.205	el	98.14
+1	9374 Jasmine Spurs Suite 508\nSouth John, TN 8...	28 rn	PM	Opera/8.93.(Windows 98; Win 9x 4.90; en-US) Pr...	Fletcher, Richards and Whitaker	3337758169645356	11/18	561	Mastercard	anthony41@reed.com	Drilling engineer	15.160.41.51	fr	70.73
+2	Unit 0065 Box 5052\nDPO AP 27450	94 vE	PM	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT ...	Simpson, Williams and Pham	675957666125	08/19	699	JCB 16 digit	amymiller@morales-harrison.com	Customer service manager	132.207.160.22	de	0.95
+3	7780 Julia Fords\nNew Stacy, WA 45798	36 vm	PM	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0 ...	Williams, Marshall and Buchanan	6011578504430710	02/24	384	Discover	brent16@olson-robinson.info	Drilling engineer	30.250.74.19	es	78.04
+4	23012 Munoz Drive Suite 337\nNew Cynthia, TX 5...	20 IE	AM	Opera/9.58.(X11; Linux x86_64; it-IT) Presto/2...	Brown, Watson and Andrews	6011456623207998	10/25	678	Diners Club / Carte Blanche	christopherwright@gmail.com	Fine artist	24.140.33.94	es	77.82
+...	...	...	...	...	...	...	...	...	...	...	...	...	...	...
+9995	966 Castaneda Locks\nWest Juliafurt, CO 96415	92 XI	PM	Mozilla/5.0 (Windows NT 5.1) AppleWebKit/5352 ...	Randall-Sloan	342945015358701	03/22	838	JCB 15 digit	iscott@wade-garner.com	Printmaker	29.73.197.114	it	82.21
+9996	832 Curtis Dam Suite 785\nNorth Edwardburgh, T...	41 JY	AM	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT ...	Hale, Collins and Wilson	210033169205009	07/25	207	JCB 16 digit	mary85@hotmail.com	Energy engineer	121.133.168.51	pt	25.63
+9997	Unit 4434 Box 6343\nDPO AE 28026-0283	74 Zh	AM	Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_7...	Anderson Ltd	6011539787356311	05/21	1	VISA 16 digit	tyler16@gmail.com	Veterinary surgeon	156.210.0.254	el	83.98
+9998	0096 English Rest\nRoystad, IA 12457	74 cL	PM	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_8;...	Cook Inc	180003348082930	11/17	987	American Express	elizabethmoore@reid.net	Local government officer	55.78.26.143	es	38.84
+9999	40674 Barrett Stravenue\nGrimesville, WI 79682	64 Hr	AM	Mozilla/5.0 (X11; Linux i686; rv:1.9.5.20) Gec...	Greene Inc	4139972901927273	02/19	302	JCB 15 digit	rachelford@vaughn.com	Embryologist, clinical	176.119.198.199	el	67.59
+10000 rows × 14 columns
+
+Check the head of the dataframe
+
+df.head()
+Address	Lot	AM or PM	Browser Info	Company	Credit Card	CC Exp Date	CC Security Code	CC Provider	Email	Job	IP Address	Language	Purchase Price
+0	16629 Pace Camp Apt. 448\nAlexisborough, NE 77...	46 in	PM	Opera/9.56.(X11; Linux x86_64; sl-SI) Presto/2...	Martinez-Herman	6011929061123406	02/20	900	JCB 16 digit	pdunlap@yahoo.com	Scientist, product/process development	149.146.147.205	el	98.14
+1	9374 Jasmine Spurs Suite 508\nSouth John, TN 8...	28 rn	PM	Opera/8.93.(Windows 98; Win 9x 4.90; en-US) Pr...	Fletcher, Richards and Whitaker	3337758169645356	11/18	561	Mastercard	anthony41@reed.com	Drilling engineer	15.160.41.51	fr	70.73
+2	Unit 0065 Box 5052\nDPO AP 27450	94 vE	PM	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT ...	Simpson, Williams and Pham	675957666125	08/19	699	JCB 16 digit	amymiller@morales-harrison.com	Customer service manager	132.207.160.22	de	0.95
+3	7780 Julia Fords\nNew Stacy, WA 45798	36 vm	PM	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0 ...	Williams, Marshall and Buchanan	6011578504430710	02/24	384	Discover	brent16@olson-robinson.info	Drilling engineer	30.250.74.19	es	78.04
+4	23012 Munoz Drive Suite 337\nNew Cynthia, TX 5...	20 IE	AM	Opera/9.58.(X11; Linux x86_64; it-IT) Presto/2...	Brown, Watson and Andrews	6011456623207998	10/25	678	Diners Club / Carte Blanche	christopherwright@gmail.com	Fine artist	24.140.33.94	es	77.82
+How many rows and columns are there in the dataframe?
+
+df.columns
+print(df.shape[0])
+print(df.shape)
+10000
+(10000, 14)
+What is the average Purchase Price?
+
+df.describe()
+Credit Card	CC Security Code	Purchase Price
+count	1.000000e+04	10000.000000	10000.000000
+mean	2.341374e+15	907.217800	50.347302
+std	2.256103e+15	1589.693035	29.015836
+min	6.040186e+10	0.000000	0.000000
+25%	3.056322e+13	280.000000	25.150000
+50%	8.699942e+14	548.000000	50.505000
+75%	4.492298e+15	816.000000	75.770000
+max	6.012000e+15	9993.000000	99.990000
+What were the highest and lowest purchase prices?
+
+highest_price = df['Purchase Price'].max()
+lowest_price = df['Purchase Price'].min()
+
+print(f'The highest purchase price is: {highest_price}')
+print(f'The lowest purchase price is: {lowest_price}')
+The highest purchase price is: 99.99
+The lowest purchase price is: 0.0
+num_english_speakers = df[df['Language'] == 'en'].shape[0]
+num_english_speakers
+1098
+# Check unique values in the 'Language' column
+unique_languages = df['Language'].unique()
+print(f'Unique languages: {unique_languages}')
+
+# Count the number of people with English ('en') as their language of choice
+num_english_speakers = df[df['Language'] == 'en'].shape[0]
+
+# Print the result
+print(f'The number of people who have English as their language of choice: {num_english_speakers}')
+Unique languages: ['el' 'fr' 'de' 'es' 'ru' 'pt' 'zh' 'en' 'it']
+The number of people who have English as their language of choice: (1098, 14)
+How many people have English 'en' as their language of choice on the website?
+
+ 
+How many people have the job title of Lawyer?
+
+num_lawyers = df[df['Job'] == 'Lawyer'].shape[0]
+
+# Print the result
+print(f'The number of people with the job title of Lawyer: {num_lawyers}')
+The number of people with the job title of Lawyer: 30
+How many people made the purchases during AM and PM?
+
+# Count the number of purchases made during AM and PM
+num_am_purchases = df[df['AM or PM'] == 'AM'].shape[0]
+num_pm_purchases = df[df['AM or PM'] == 'PM'].shape[0]
+
+# Print the results
+print(f'The number of purchases made during AM: {num_am_purchases}')
+print(f'The number of purchases made during PM: {num_pm_purchases}')
+The number of purchases made during AM: 4932
+The number of purchases made during PM: 5068
+What are the five most common job titles?
+
+top_five_jobs = df['Job'].value_counts().head(5)
+
+# Print the results
+print('The five most common job titles are:')
+print(top_five_jobs)
+The five most common job titles are:
+Job
+Interior and spatial designer    31
+Lawyer                           30
+Social researcher                28
+Purchasing manager               27
+Designer, jewellery              27
+Name: count, dtype: int64
+Someone made a purchase that came from Lot: "90 WT". What was the Purchase Price for this transaction?
+
+df[df['Lot'] == '90 WT']['Purchase Price' ].iloc[0]
+513    75.1
+Name: Purchase Price, dtype: float64
+How many people have American Express as their Credit Card Provider and made a purchase above $95?
+
+df[(df['CC Provider'] == 'American Express') & (df['Purchase Price'] > 95)].shape[0]
+39
+Hard: How many people have a credit card that expires in 2025?
+
+df[df['CC Exp Date'].str.contains('/25')].shape[0]
+1033
+Hard: What are the top 5 most popular email providers/hosts (e.g. gmail.com, yahoo.com, etc...)
+
+five_emails = df['Email'].value_counts().head(5)
+
+# Print the results
+print('The top 5 most popular email providers/hosts are:')
+print(five_emails)
+The top 5 most popular email providers/hosts are:
+Email
+leekathy@yahoo.com         2
+joshua41@hotmail.com       2
+christopher29@gmail.com    2
+ethomas@hotmail.com        2
+brownjohn@hotmail.com      2
+Name: count, dtype: int64
